@@ -1,0 +1,345 @@
+/* ═══════════════════════════════════════
+   DARK PORTFOLIO ZONE
+═══════════════════════════════════════ */
+.portfolio-zone {
+  background: var(--d-bg);
+  padding-bottom: 80px;
+}
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ── section heading ── */
+.section-head {
+  padding: 64px 0 36px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.sec-num {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.65rem;
+  color: var(--d-rust);
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+.sec-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  font-weight: 600;
+  color: var(--d-text);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.sec-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--d-line-hvy);
+}
+
+/* ── project cards ── */
+.project-card {
+  border: 1px solid var(--d-line);
+  padding: 32px 36px;
+  margin-bottom: 2px;
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 32px;
+  align-items: start;
+  transition: border-color var(--transition), background var(--transition);
+  cursor: default;
+}
+
+.project-card:hover {
+  border-color: var(--d-line-hvy);
+  background: rgba(255,255,255,0.015);
+}
+
+.project-card:hover .project-link { opacity: 1; }
+
+.proj-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.proj-num {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.6rem;
+  color: var(--d-rust);
+  letter-spacing: 0.08em;
+}
+
+.proj-year {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.6rem;
+  color: var(--d-muted);
+}
+
+.proj-type {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.6rem;
+  color: var(--d-muted);
+  border: 1px solid var(--d-line);
+  padding: 1px 7px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.proj-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--d-text);
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.proj-desc {
+  font-family: 'IM Fell English', serif;
+  font-size: 1.02rem;
+  color: var(--d-muted);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.proj-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--d-muted);
+  border: 1px solid var(--d-line);
+  padding: 2px 8px;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.project-card:hover .tag {
+  color: var(--d-text);
+  border-color: var(--d-line-hvy);
+}
+
+.proj-panel {
+  border-left: 1px solid var(--d-line);
+  padding-left: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.proj-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.proj-stat-label {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--d-rust);
+}
+
+.proj-stat-value {
+  font-family: 'IM Fell English', serif;
+  font-size: 0.88rem;
+  color: var(--d-text);
+  line-height: 1.4;
+}
+
+.project-link {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--d-rust);
+  text-decoration: none;
+  border: 1px solid var(--d-rust-dim);
+  padding: 6px 14px;
+  display: inline-block;
+  opacity: 0.6;
+  transition: opacity var(--transition), background var(--transition);
+  margin-top: 4px;
+  align-self: flex-start;
+}
+
+.project-link:hover { opacity: 1; background: rgba(176,58,24,0.1); }
+
+/* ── stack section ── */
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+
+.stack-group {
+  border: 1px solid var(--d-line);
+  padding: 20px 20px 16px;
+}
+
+
+.stack-group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--d-line);
+}
+
+.stack-group-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--d-rust);
+  display: block;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+
+.stack-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(232,224,206,0.05);
+  gap: 8px;
+}
+.stack-item:last-child { border-bottom: none; }
+
+.stack-name {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.72rem;
+  color: var(--d-text);
+}
+
+.stack-pips {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.pip {
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid var(--d-muted);
+  border-radius: 50%;
+  display: block;
+}
+
+.pip-filled {
+  background: var(--d-rust);
+  border-color: var(--d-rust);
+}
+
+/* ── contact ── */
+.contact-block {
+  border: 1px solid var(--d-line);
+  padding: 48px;
+  text-align: center;
+  margin-top: 2px;
+}
+
+.contact-eyebrow {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--d-rust);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.contact-headline {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.2rem, 3vw, 1.9rem);
+  color: var(--d-text);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+
+.contact-sub {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--d-muted);
+  margin-bottom: 36px;
+}
+
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  list-style: none;
+  margin-top: 36px;
+}
+
+.contact-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100px;
+  padding: 16px 12px;
+  border: 1px solid var(--d-line);
+  color: var(--d-muted);
+  text-decoration: none;
+  transition: border-color var(--transition), color var(--transition), background var(--transition);
+}
+
+.contact-btn:hover {
+  border-color: var(--d-rust);
+  color: var(--d-text);
+  background: rgba(176,58,24,0.06);
+}
+
+.contact-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.contact-btn span {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── site footer ── */
+footer {
+  border-top: 1px solid var(--d-line);
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer span {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--d-muted);
+  opacity: 0.6;
+}

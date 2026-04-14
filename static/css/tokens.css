@@ -1,0 +1,29 @@
+/* ═══════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════ */
+:root {
+  /* Sheet (parchment zone) */
+  --p-bg:        #e9e0ca;
+  --p-bg-dark:   #ddd3b8;
+  --p-ink:       #18130a;
+  --p-ink-mid:   #332a18;
+  --p-aged:      #7a6a4a;
+  --p-rust:      #7e2b10;
+  --p-line:      rgba(24,19,10,0.22);
+  --p-line-hvy:  rgba(24,19,10,0.55);
+  --p-box:       rgba(24,19,10,0.04);
+
+  /* Portfolio (dark zone) */
+  --d-bg:        #0e0c09;
+  --d-bg-2:      #151209;
+  --d-text:      #e8e0ce;
+  --d-muted:     #8a7f68;
+  --d-rust:      #b03a18;
+  --d-rust-dim:  #7e2b10;
+  --d-line:      rgba(232,224,206,0.12);
+  --d-line-hvy:  rgba(232,224,206,0.3);
+
+  /* Shared */
+  --radius: 0px;
+  --transition: 0.22s ease;
+}

@@ -1,0 +1,54 @@
+/* ═══════════════════════════════════════
+   STICKY NAV
+═══════════════════════════════════════ */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--d-bg);
+  border-bottom: 1px solid var(--d-line-hvy);
+  height: 48px;
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.nav-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--d-text);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex; gap: 36px; list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--d-muted);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.nav-links a:hover { color: var(--d-text); }
+
+.nav-cta {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--d-rust);
+  border: 1px solid var(--d-rust-dim);
+  padding: 5px 14px;
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition);
+}
+.nav-cta:hover { background: var(--d-rust); color: #fff; }

@@ -1,0 +1,567 @@
+/* ═══════════════════════════════════════
+   CHARACTER SHEET HERO
+═══════════════════════════════════════ */
+.sheet-hero {
+  background: var(--d-bg);
+  color: var(--p-ink);
+  padding: 40px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* the physical sheet of paper */
+.sheet-border {
+  margin: 0 auto;
+  max-width: 1264px;
+  background: var(--p-bg);
+  box-shadow:
+    0 8px 40px rgba(0,0,0,0.6),
+    0 2px 8px rgba(0,0,0,0.4);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* the printed double-line border inside the sheet */
+.sheet-inner {
+  border: 2px solid var(--p-ink-mid);
+  box-shadow: inset 0 0 0 4px var(--p-bg), inset 0 0 0 6px var(--p-ink-mid);
+  padding: 24px 28px 20px;
+}
+
+/* parchment texture on the sheet itself */
+.sheet-border::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='0.09'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sheet-border > * { position: relative; z-index: 1; }
+
+/* ── top bar ── */
+.sheet-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 2px solid var(--p-ink-mid);
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+
+.sheet-form-id {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  color: var(--p-aged);
+  line-height: 1.9;
+  text-transform: uppercase;
+}
+
+.sheet-title-block { text-align: center; flex: 1; }
+
+.sheet-kicker {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--p-aged);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.sheet-name {
+  font-family: 'UnifrakturMaguntia', cursive;
+  font-size: clamp(2.8rem, 7vw, 5.2rem);
+  line-height: 1;
+  color: var(--p-ink);
+  text-shadow: 2px 2px 0 var(--p-rust);
+  display: block;
+  animation: riseIn 0.9s ease both;
+}
+
+.sheet-role {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--p-ink-mid);
+  margin-top: 6px;
+  display: block;
+}
+
+.sheet-issue {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  color: var(--p-aged);
+  text-align: right;
+  line-height: 1.9;
+}
+
+/* ── identity row ── */
+.id-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1.5px solid var(--p-line-hvy);
+  margin-bottom: 14px;
+}
+
+.id-cell {
+  padding: 5px 10px;
+  border-right: 1px solid var(--p-line);
+}
+.id-cell:last-child { border-right: none; }
+
+.id-label {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--p-aged);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.id-value {
+  font-family: 'IM Fell English', serif;
+  font-size: 0.88rem;
+  color: var(--p-ink);
+  line-height: 1.2;
+  display: block;
+}
+
+.id-value.accent { color: var(--p-rust); font-weight: bold; }
+
+/* ── right col: bio + availability stacked ── */
+.sheet-body-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+/* ── ability scores ── */
+.ability-block-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--p-bg);
+  background: var(--p-ink-mid);
+  padding: 3px 8px;
+  text-align: center;
+  display: block;
+  margin-bottom: 0;
+}
+
+.ability-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1.5px solid var(--p-line-hvy);
+  border-top: none;
+}
+
+.ability {
+  padding: 6px 4px 5px;
+  text-align: center;
+  border-right: 1px solid var(--p-line);
+  border-bottom: 1px solid var(--p-line);
+}
+.ability:nth-child(3n) { border-right: none; }
+.ability:nth-child(n+4) { border-bottom: none; }
+
+.ab-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.45rem;
+  letter-spacing: 0.14em;
+  color: var(--p-aged);
+  display: block;
+  margin-bottom: 1px;
+}
+
+.ab-score {
+  font-family: 'UnifrakturMaguntia', cursive;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--p-ink);
+  display: block;
+}
+
+.ab-mod {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.6rem;
+  color: var(--p-rust);
+  font-weight: 700;
+  border-top: 1px solid var(--p-line);
+  margin-top: 2px;
+  padding-top: 1px;
+  display: block;
+}
+
+.ab-gloss {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.38rem;
+  color: var(--p-aged);
+  display: block;
+  margin-top: 1px;
+  line-height: 1.2;
+}
+
+/* ── traits ── */
+.traits-list {
+  border: 1.5px solid var(--p-line-hvy);
+  border-top: none;
+}
+
+.trait-row {
+  display: flex;
+  gap: 10px;
+  padding: 5px 10px;
+  border-bottom: 1px solid var(--p-line);
+  font-size: 0.72rem;
+}
+.trait-row:last-child { border-bottom: none; }
+
+.trait-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.48rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--p-rust);
+  flex-shrink: 0;
+  padding-top: 2px;
+  min-width: 64px;
+}
+
+.trait-text {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 0.78rem;
+  color: var(--p-ink-mid);
+  line-height: 1.5;
+}
+
+/* ── languages ── */
+.languages-row {
+  display: flex;
+  border: 1.5px solid var(--p-line-hvy);
+  border-top: none;
+}
+
+.lang-item {
+  flex: 1;
+  padding: 5px 10px;
+  border-right: 1px solid var(--p-line);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.lang-item:last-child { border-right: none; }
+
+.lang-name {
+  font-family: 'IM Fell English', serif;
+  font-size: 0.88rem;
+  color: var(--p-ink);
+}
+
+.lang-level {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--p-aged);
+}
+
+/* ── saving throws ── */
+.saves-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--p-bg);
+  background: var(--p-ink-mid);
+  padding: 3px 8px;
+  text-align: center;
+  display: block;
+  margin-top: 10px;
+}
+
+.save-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 8px;
+  border: 1px solid var(--p-line);
+  border-top: none;
+  font-size: 0.65rem;
+}
+
+.save-name {
+  font-family: 'Courier Prime', monospace;
+  color: var(--p-ink-mid);
+}
+
+.save-val {
+  font-family: 'Courier Prime', monospace;
+  font-weight: 700;
+  color: var(--p-rust);
+}
+
+/* ── center: about + proficiencies ── */
+.box-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--p-bg);
+  background: var(--p-ink-mid);
+  padding: 3px 8px;
+  text-align: center;
+  display: block;
+}
+
+.box-title.rust { background: var(--p-rust); }
+
+.ruled-about {
+  border: 1.5px solid var(--p-line-hvy);
+  border-top: none;
+  padding: 8px 12px;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent, transparent 22px,
+    rgba(24,19,10,0.1) 22px, rgba(24,19,10,0.1) 23px
+  );
+  min-height: 88px;
+  margin-bottom: 10px;
+}
+
+.ruled-about p {
+  font-family: 'IM Fell English', serif;
+  font-size: 0.82rem;
+  line-height: 23px;
+  color: var(--p-ink);
+}
+
+.ruled-about p::first-letter {
+  font-family: 'UnifrakturMaguntia', cursive;
+  font-size: 2.8rem;
+  float: left;
+  line-height: 0.78;
+  margin-right: 5px;
+  color: var(--p-rust);
+}
+
+/* skills two-col */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1.5px solid var(--p-line-hvy);
+  border-top: none;
+}
+
+.skill-col { padding: 4px 0; }
+.skill-col:first-child { border-right: 1px solid var(--p-line); }
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  border-bottom: 1px solid rgba(24,19,10,0.08);
+  font-size: 0.68rem;
+}
+.skill-item:last-child { border-bottom: none; }
+
+.skill-pip {
+  width: 8px; height: 8px;
+  border: 1.5px solid var(--p-ink-mid);
+  flex-shrink: 0;
+  font-size: 0.4rem;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--p-rust);
+}
+
+.skill-name {
+  font-family: 'Courier Prime', monospace;
+  color: var(--p-ink-mid);
+  flex: 1;
+}
+
+.skill-bonus {
+  font-family: 'Courier Prime', monospace;
+  font-weight: 700;
+  color: var(--p-rust);
+  font-size: 0.65rem;
+}
+
+/* ── stats row: portrait | divider | bio ── */
+.sheet-stats-row {
+  display: grid;
+  grid-template-columns: 200px 60px 1fr;
+  gap: 0 14px;
+  align-items: stretch;
+}
+
+.sheet-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sheet-divider-img {
+  height: 200px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* placeholder when no image yet */
+.sheet-divider:not(:has(img[src])) .sheet-divider-img,
+.sheet-divider-img[src=""] {
+  display: none;
+}
+
+.sheet-stats-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── vitals + availability ── */
+.combat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1.5px solid var(--p-line-hvy);
+  border-top: none;
+}
+
+.combat-cell {
+  padding: 8px 6px;
+  text-align: center;
+  border-right: 1px solid var(--p-line);
+  border-bottom: 1px solid var(--p-line);
+}
+.combat-cell:nth-child(2n) { border-right: none; }
+.combat-cell:nth-child(n+3) { border-bottom: none; }
+
+.combat-num {
+  font-family: 'UnifrakturMaguntia', cursive;
+  font-size: 2rem;
+  color: var(--p-ink);
+  line-height: 1;
+  display: block;
+}
+
+.combat-label {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.44rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--p-aged);
+  display: block;
+  margin-top: 2px;
+}
+
+.combat-col,
+.avail-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.combat-col .combat-grid {
+  flex: 1;
+  align-content: stretch;
+}
+
+.combat-col .combat-cell {
+  flex: 1;
+}
+
+.avail-col .avail-row {
+  flex: 1;
+}
+
+.avail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px;
+  border: 1px solid var(--p-line);
+  border-top: none;
+  font-size: 0.68rem;
+}
+
+.avail-label {
+  font-family: 'Courier Prime', monospace;
+  color: var(--p-aged);
+}
+
+.avail-val {
+  font-family: 'IM Fell English', serif;
+  color: var(--p-ink);
+}
+
+.avail-val.open { color: var(--p-rust); font-weight: bold; }
+
+.portrait {
+  border: 1.5px solid var(--p-line-hvy);
+  display: flex; align-items: center; justify-content: center;
+  background: var(--p-box);
+  flex-direction: column;
+  gap: 4px;
+  min-height: 200px;
+  height: 100%;
+}
+
+.portrait-glyph {
+  font-family: 'UnifrakturMaguntia', cursive;
+  font-size: 3rem;
+  color: var(--p-aged);
+  opacity: 0.3;
+  line-height: 1;
+}
+
+.portrait-hint {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.44rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--p-aged);
+  opacity: 0.5;
+}
+
+/* ── sheet footer strip ── */
+.sheet-footer-strip {
+  border-top: 2px solid var(--p-line-hvy);
+  margin-top: 14px;
+  padding-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sheet-footer-strip span {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  color: var(--p-aged);
+  text-transform: uppercase;
+}
+
+/* scroll cue + seam */
+.scroll-cue {
+  text-align: center;
+  padding: 40px 0 8px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--d-rust);
+  animation: pulse 2.2s infinite;
+}
+
+.seam { display: none; }

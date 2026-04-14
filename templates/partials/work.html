@@ -1,0 +1,51 @@
+<!-- ══════════════════════════════════════
+     CAMPAIGN LOG (WORK)
+══════════════════════════════════════ -->
+<div class="wrap" id="work">
+  <div class="section-head reveal">
+    <span class="sec-num">[ 01 ]</span>
+    <h2 class="sec-title">Campaign Log</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  {% for project in projects %}
+  <div class="project-card reveal">
+    <div class="proj-left">
+      <div class="proj-meta">
+        <span class="proj-num">{{ forloop.counter|stringformat:"02d" }}</span>
+        <span class="proj-year">{{ project.year }}</span>
+        <span class="proj-type">{{ project.type }}</span>
+      </div>
+      <h3 class="proj-title">{{ project.title }}</h3>
+      <p class="proj-desc">{{ project.description }}</p>
+      <div class="proj-tags">
+        {% for tag in project.tags %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="proj-panel">
+      <div class="proj-stat">
+        <span class="proj-stat-label">Role</span>
+        <span class="proj-stat-value">{{ project.role }}</span>
+      </div>
+      <div class="proj-stat">
+        <span class="proj-stat-label">Scale</span>
+        <span class="proj-stat-value">{{ project.scale }}</span>
+      </div>
+      <div class="proj-stat">
+        <span class="proj-stat-label">Team</span>
+        <span class="proj-stat-value">{{ project.team }}</span>
+      </div>
+      <div class="proj-stat">
+        <span class="proj-stat-label">Outcome</span>
+        <span class="proj-stat-value">{{ project.outcome }}</span>
+      </div>
+      {% if project.url %}
+      <a href="{{ project.url }}" class="project-link">View Project →</a>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+
+</div>

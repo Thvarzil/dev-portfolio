@@ -1,0 +1,31 @@
+<!-- ══════════════════════════════════════
+     ARMOURY (STACK)
+══════════════════════════════════════ -->
+<div class="wrap" id="stack">
+  <div class="section-head reveal">
+    <span class="sec-num">[ 02 ]</span>
+    <h2 class="sec-title">Armoury</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <div class="stack-grid reveal">
+    {% for group in stack %}
+    <div class="stack-group">
+      <div class="stack-group-header">
+        <span class="stack-group-title">{{ group.title }}</span>
+      </div>
+      {% for item in group.items %}
+      <div class="stack-item">
+        <span class="stack-name">{{ item.name }}</span>
+        <div class="stack-pips">
+          <span class="pip {% if item.level >= 1 %}pip-filled{% endif %}"></span>
+          <span class="pip {% if item.level >= 2 %}pip-filled{% endif %}"></span>
+          <span class="pip {% if item.level >= 3 %}pip-filled{% endif %}"></span>
+          <span class="pip {% if item.level >= 4 %}pip-filled{% endif %}"></span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
