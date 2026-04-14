@@ -11,6 +11,16 @@ body {
   overflow-x: hidden;
 }
 
+/* focus styles */
+:focus-visible {
+  outline: 2px solid var(--d-rust);
+  outline-offset: 3px;
+}
+
+.sheet-hero :focus-visible {
+  outline-color: var(--p-rust);
+}
+
 /* grain overlay */
 body::after {
   content: '';

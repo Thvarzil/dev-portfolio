@@ -21,6 +21,16 @@
   transform: translateY(0);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .sheet-name { animation: none; }
+  .scroll-cue { animation: none; }
+}
+
 /* stagger delays */
 .reveal:nth-child(1) { transition-delay: 0s; }
 .reveal:nth-child(2) { transition-delay: 0.08s; }

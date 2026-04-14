@@ -17,11 +17,11 @@
       {% for item in group.items %}
       <div class="stack-item">
         <span class="stack-name">{{ item.name }}</span>
-        <div class="stack-pips">
-          <span class="pip {% if item.level >= 1 %}pip-filled{% endif %}"></span>
-          <span class="pip {% if item.level >= 2 %}pip-filled{% endif %}"></span>
-          <span class="pip {% if item.level >= 3 %}pip-filled{% endif %}"></span>
-          <span class="pip {% if item.level >= 4 %}pip-filled{% endif %}"></span>
+        <div class="stack-pips" role="img" aria-label="{{ item.name }} proficiency: {{ item.level }} of 4">
+          <span class="pip {% if item.level >= 1 %}pip-filled{% endif %}" aria-hidden="true"></span>
+          <span class="pip {% if item.level >= 2 %}pip-filled{% endif %}" aria-hidden="true"></span>
+          <span class="pip {% if item.level >= 3 %}pip-filled{% endif %}" aria-hidden="true"></span>
+          <span class="pip {% if item.level >= 4 %}pip-filled{% endif %}" aria-hidden="true"></span>
         </div>
       </div>
       {% endfor %}

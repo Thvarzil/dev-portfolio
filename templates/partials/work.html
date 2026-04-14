@@ -42,7 +42,7 @@
         <span class="proj-stat-value">{{ project.outcome }}</span>
       </div>
       {% if project.url %}
-      <a href="{{ project.url }}" class="project-link">View Project →</a>
+      <a href="{{ project.url }}" class="project-link" aria-label="View project: {{ project.title }}">View Project →</a>
       {% endif %}
     </div>
   </div>
