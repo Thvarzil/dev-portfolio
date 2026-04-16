@@ -9,16 +9,13 @@ APP=$REPO/backend
 
 echo "==> Pulling latest code..."
 git -C "$REPO" pull
+git -C "$REPO" submodule update --init --recursive
 
 echo "==> Installing Python dependencies..."
 "$VENV/bin/pip" install -q -r "$APP/requirements.txt"
 
-echo "==> Running migrations..."
-cd "$APP"
-"$VENV/bin/python" manage.py migrate --noinput
-
-echo "==> Collecting static files..."
-"$VENV/bin/python" manage.py collectstatic --noinput
+echo "==> Building..."
+bash "$REPO/scripts/build.sh"
 
 echo "==> Reloading gunicorn..."
 sudo systemctl reload portfolio-gunicorn
