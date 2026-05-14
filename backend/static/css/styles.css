@@ -1,0 +1,295 @@
+/* ── Hurufraktur — place font file alongside this HTML ── */
+@font-face {
+  font-family: 'Hurufraktur';
+  src: url(/static/fonts/Hurufraktur_Demo.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --bg:       #141c26;
+  --text:     #a8b8cc;
+  --muted:    #5a6a7e;
+  --head:     #c8ddf0;
+  --acc:      #4a7fa8;
+  --acc2:     #6a9fc8;
+  --bdr:      #1e2d3e;
+  --bdr2:     #2e4a60;
+  --avail:    #4a8a6e;
+  --cave:     #070b11;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  color: var(--text);
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  background: radial-gradient(ellipse at 50% 40%, #1e2d3e 0%, #141c26 45%, #0e1520 100%) fixed;
+}
+
+/* Ruled line texture */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    to bottom, transparent, transparent 27px,
+    rgba(30,45,62,.18) 27px, rgba(30,45,62,.18) 28px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Cave formations — fixed to viewport ── */
+.cave-top, .cave-bottom {
+  position: fixed;
+  left: 0; right: 0; width: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+.cave-top    { top: 0;    height: 520px; }
+.cave-bottom { bottom: 0; height: 520px; }
+.cave-top svg, .cave-bottom svg { width: 100%; height: 100%; display: block; }
+
+/* ── Nav ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(14,21,32,.96);
+  border-bottom: 1px solid var(--bdr);
+  padding: 0 2.5rem;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-name {
+  font-family: 'Courier Prime', monospace;
+  font-size: 13px; letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--head); font-weight: 700;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px; letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted); text-decoration: none;
+  transition: color 200ms;
+}
+.nav-links a:hover { color: var(--head); }
+
+/* ── Main content ── */
+main {
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 2rem 8rem;
+}
+
+.srule { border: none; border-top: 3px double var(--bdr); margin: 0; }
+
+/* ── Hero ── */
+#hero { padding-top: 100px; padding-bottom: 3.5rem; }
+
+.hero-inner {
+  border: 1px solid var(--bdr);
+  background: rgba(13,19,30,.88);
+  padding: 2.5rem;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+.hero-inner.vis { opacity: 1; transform: translateY(0); }
+
+.hero-hdr {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 1.5rem; padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--bdr);
+}
+.hero-name {
+  font-family: 'Hurufraktur', 'UnifrakturMaguntia', serif;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  line-height: 1.05; color: var(--head);
+  text-shadow: 0 0 40px rgba(74,127,168,.28), 0 0 90px rgba(74,127,168,.12);
+}
+.hero-role {
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--acc2); margin-top: .5rem;
+}
+.hero-avail {
+  font-family: 'Courier Prime', monospace;
+  font-size: 10px; letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--avail); border: 1px solid var(--avail);
+  padding: 4px 10px; white-space: nowrap; margin-top: 4px;
+}
+
+/* Stat block */
+.stat-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--bdr); margin-bottom: 1.5rem;
+}
+.sc { padding: .6rem 1rem; border-right: 1px solid var(--bdr); border-bottom: 1px solid var(--bdr); }
+.sc:nth-child(2n)      { border-right: none; }
+.sc:nth-last-child(-n+2) { border-bottom: none; }
+.sl {
+  font-family: 'Courier Prime', monospace;
+  font-size: 9px; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--acc);
+  display: block; margin-bottom: 2px;
+}
+.sv  { font-size: 14px; color: var(--text); }
+.ll  { font-family: 'Courier Prime', monospace; font-size: 10px; color: var(--muted); margin-left: 6px; }
+
+/* Traits */
+.trait-list { display: flex; flex-direction: column; border: 1px solid var(--bdr); }
+.tr  { display: flex; border-bottom: 1px solid var(--bdr); padding: .55rem 1rem; }
+.tr:last-child { border-bottom: none; }
+.tl  {
+  font-family: 'Courier Prime', monospace;
+  font-size: 10px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--acc);
+  min-width: 90px; flex-shrink: 0; margin-top: 2px;
+}
+.tt  { font-size: 14px; color: var(--text); line-height: 1.5; }
+.bio { font-size: 15px; color: var(--muted); font-style: italic; line-height: 1.75; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--bdr); }
+
+/* ── Section headers ── */
+.sec-hdr { padding: 2.5rem 0 1.75rem; display: flex; align-items: baseline; gap: 1.2rem; }
+.sec-title {
+  font-family: 'Hurufraktur', 'UnifrakturMaguntia', serif;
+  font-size: 2.2rem; line-height: 1; color: var(--head);
+  text-shadow: 0 0 30px rgba(74,127,168,.22);
+}
+.sec-sub { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: .1em; color: var(--muted); }
+
+/* ── Projects ── */
+.proj-list { display: flex; flex-direction: column; }
+.pe {
+  border: 1px solid var(--bdr); border-top: none;
+  display: grid; grid-template-columns: 64px 1fr;
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 500ms ease, transform 500ms ease, border-color 200ms;
+}
+.pe:first-child { border-top: 1px solid var(--bdr); }
+.pe:hover { border-color: var(--bdr2); }
+.pe:hover .pbl { background: rgba(74,127,168,.12); }
+
+.pbl {
+  border-right: 1px solid var(--bdr);
+  transition: background 200ms;
+  display: flex; flex-direction: column; align-items: center; padding-top: 1.25rem;
+}
+.pyr {
+  font-family: 'Courier Prime', monospace;
+  font-size: 10px; color: var(--muted);
+  writing-mode: vertical-rl; transform: rotate(180deg);
+}
+.pb { padding: 1.25rem 1.5rem; }
+.pt { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .4rem; }
+.ptitle { font-family: 'Spectral', serif; font-size: 1.2rem; color: var(--head); font-style: italic; }
+.ptag {
+  font-family: 'Courier Prime', monospace;
+  font-size: 9px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted); border: 1px solid var(--bdr); padding: 3px 8px; white-space: nowrap;
+}
+.pdesc { font-size: 14px; color: var(--muted); margin-bottom: .75rem; line-height: 1.6; }
+.pmeta {
+  display: flex; flex-wrap: wrap; gap: .5rem 1.5rem;
+  margin-bottom: .75rem;
+  border-top: 1px solid var(--bdr); border-bottom: 1px solid var(--bdr); padding: .5rem 0;
+}
+.pmi { font-family: 'Courier Prime', monospace; font-size: 10px; }
+.pml { color: var(--acc); letter-spacing: .1em; text-transform: uppercase; margin-right: 5px; }
+.pmv { color: var(--text); }
+.pout { font-size: 13px; color: var(--acc2); font-style: italic; margin-bottom: .75rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-family: 'Courier Prime', monospace; font-size: 10px; color: var(--muted); border: 1px solid var(--bdr); padding: 2px 8px; }
+.plink {
+  font-family: 'Courier Prime', monospace; font-size: 10px;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--acc2); text-decoration: none;
+  border-bottom: 1px solid var(--acc2); margin-top: .5rem;
+  display: inline-block; transition: color 200ms;
+}
+.plink:hover { color: var(--head); border-color: var(--head); }
+
+/* ── Skills — flat grid ── */
+.stack-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--bdr);
+}
+.scat {
+  border-right: 1px solid var(--bdr);
+  border-bottom: 1px solid var(--bdr);
+}
+.scat:nth-child(2n)        { border-right: none; }
+.scat:nth-last-child(-n+2) { border-bottom: none; }
+.sch {
+  font-family: 'Courier Prime', monospace;
+  font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--acc); padding: .7rem 1rem;
+  border-bottom: 1px solid var(--bdr);
+}
+.sk-names {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  padding: .75rem 1rem;
+}
+.skn {
+  font-family: 'Spectral', serif;
+  font-size: 14px;
+  color: var(--text);
+  width: 100%;
+  padding: .3rem 0;
+  border-bottom: 1px solid rgba(30,45,62,.5);
+  line-height: 1.4;
+}
+.skn:last-child { border-bottom: none; }
+
+/* ── Contact ── */
+.con-block {
+  border: 1px solid var(--bdr); padding: 2rem 2.5rem;
+  background: rgba(13,19,30,.88);
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+.con-block.vis { opacity: 1; transform: translateY(0); }
+.con-hdr {
+  font-family: 'Hurufraktur', 'UnifrakturMaguntia', serif;
+  font-size: 1.9rem; line-height: 1; color: var(--head);
+  margin-bottom: 1rem; padding-bottom: .75rem; border-bottom: 1px solid var(--bdr);
+  text-shadow: 0 0 30px rgba(74,127,168,.2);
+}
+.con-links { display: flex; flex-wrap: wrap; gap: .75rem 2rem; margin-bottom: 1.5rem; }
+.clink {
+  font-family: 'Courier Prime', monospace; font-size: 12px; letter-spacing: .1em;
+  color: var(--text); text-decoration: none;
+  display: flex; align-items: center; gap: 8px; transition: color 200ms;
+}
+.clink:hover { color: var(--head); }
+.clabel { color: var(--acc); text-transform: uppercase; font-size: 10px; letter-spacing: .14em; }
+.colo { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: .08em; color: var(--muted); border-top: 1px solid var(--bdr); padding-top: 1rem; }
+
+/* ── Footer ── */
+footer {
+  position: relative; z-index: 2;
+  border-top: 3px double var(--bdr);
+  text-align: center; padding: 1.5rem 2rem 5rem;
+  font-family: 'Courier Prime', monospace; font-size: 10px;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+}
+
+/* ── Scroll reveals ── */
+.rev { opacity: 0; transform: translateY(14px); transition: opacity 500ms ease, transform 500ms ease; }
+.rev.vis { opacity: 1; transform: translateY(0); }
+.s1{transition-delay:60ms} .s2{transition-delay:140ms} .s3{transition-delay:220ms} .s4{transition-delay:300ms}
