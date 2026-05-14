@@ -12,7 +12,7 @@ if _env_path.exists():
             _key, _val = _line.split('=', 1)
             os.environ.setdefault(_key.strip(), _val.strip())
 
-SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev-insecure-placeholder-not-used')
 
 DEBUG = os.environ.get('DJANGO_DEBUG', 'false').lower() == 'true'
 
