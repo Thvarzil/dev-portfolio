@@ -47,16 +47,9 @@ portfolio/
 
 3. **Run Development Servers:**
    ```bash
-   # Option 1: Using the dev script
-   ./scripts/dev.sh
-
-   # Option 2: Manual (two terminals)
-   # Terminal 1
-   cd backend && python manage.py runserver
-
-   # Terminal 2
-   cd frontend/portfolio && npm run dev
+   make dev
    ```
+   This starts the Django backend in Docker and the Vite dev server on the host.
 
 4. **Access:**
    - Frontend: http://localhost:5173
@@ -66,9 +59,7 @@ portfolio/
 ### Production Build
 
 ```bash
-./scripts/build.sh
-cd backend && python manage.py runserver
-# Visit http://localhost:8000
+make build
 ```
 
 ## Adding a New Side Project
@@ -115,11 +106,26 @@ cd backend && python manage.py runserver
    # Access at http://localhost:8000/projects/my-project/
    ```
 
+## Make Commands
+
+| Command | Description |
+|---------|-------------|
+| `make dev` | Start backend container + frontend dev server |
+| `make up` | Start containers in foreground (backend logs visible) |
+| `make down` | Stop containers |
+| `make logs` | Tail container logs |
+| `make migrate` | Run database migrations |
+| `make makemigrations` | Create new migrations |
+| `make shell` | Open Django shell in running container |
+| `make createsuperuser` | Create a Django superuser |
+| `make collectstatic` | Collect static files |
+| `make build` | Run production build script |
+
 ## Docker
 
 ### Development
 ```bash
-docker-compose -f docker/docker-compose.yml up
+docker compose -f docker/docker-compose.yml up
 ```
 
 ### Production
