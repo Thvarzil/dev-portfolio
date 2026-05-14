@@ -11,4 +11,6 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DEBUG=True
+      - DJANGO_DEBUG=True
+      - DJANGO_SECRET_KEY=dev-only-secret-key-change-in-production
+      - DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1,0.0.0.0
