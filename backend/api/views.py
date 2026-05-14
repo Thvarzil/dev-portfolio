@@ -98,7 +98,7 @@ def portfolio_index(request):
         },
     }
 
-    return render(request, 'portfolio-3.html', context)
+    return render(request, 'index.html', context)
 
 
 @require_http_methods(["GET"])
